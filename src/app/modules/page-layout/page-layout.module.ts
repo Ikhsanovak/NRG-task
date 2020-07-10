@@ -12,6 +12,9 @@ import {MatIconModule} from '@angular/material';
     CommonModule,
     MatToolbarModule,
     MatIconModule
+  ],
+  exports: [
+    PageLayoutComponent
   ]
 })
 export class PageLayoutModule { }
