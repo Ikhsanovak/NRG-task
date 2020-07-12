@@ -1,0 +1,12 @@
+@import "../../../assets/themes/base/styles/common/base.scss";
+
+.dashboard {
+  &__viewport {
+    height: calc(100vh - #{$non-content-height});
+    width: 100%;
+  }
+
+  &__item {
+    height: 280px;
+  }
+}

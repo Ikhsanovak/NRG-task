@@ -1,3 +1,11 @@
-.example-spacer {
-  flex: 1 1 auto;
+@import "../../../../assets/themes/base/styles/common/base.scss";
+
+.header {
+  &__example-spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: $header-height;
 }

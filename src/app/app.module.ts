@@ -8,6 +8,7 @@ import { reducers, metaReducers } from './store/reducers';
 import { AppRoutingModule } from './app-routing.module';
 import {PageLayoutModule} from './modules/page-layout/page-layout.module';
 import {DashboardModule} from './modules/dashboard/dashboard.module';
+import {TestModule} from './modules/test/test.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {DashboardModule} from './modules/dashboard/dashboard.module';
     StoreModule.forRoot(reducers, { metaReducers }),
     AppRoutingModule,
     PageLayoutModule,
-    DashboardModule
+    DashboardModule,
+    TestModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
