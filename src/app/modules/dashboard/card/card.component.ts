@@ -24,4 +24,13 @@ export class CardComponent implements OnInit {
     });
   }
 
+  edit(event) {
+    event.stopPropagation();
+    console.log('edit');
+  }
+
+  delete(event) {
+    event.stopPropagation();
+    console.log('delete');
+  }
 }
