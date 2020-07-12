@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {PageLayoutModule} from './modules/page-layout/page-layout.module';
 import {DashboardModule} from './modules/dashboard/dashboard.module';
 import {TestModule} from './modules/test/test.module';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,15 @@ import {TestModule} from './modules/test/test.module';
     BrowserModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
+    HttpClientModule,
     AppRoutingModule,
     PageLayoutModule,
     DashboardModule,
     TestModule,
   ],
-  providers: [],
+  providers: [
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

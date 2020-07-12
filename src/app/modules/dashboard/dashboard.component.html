@@ -1,7 +1,7 @@
 <app-page-layout>
   <div content>
     <cdk-virtual-scroll-viewport itemSize="280" class="dashboard__viewport">
-      <div *cdkVirtualFor="let photo of mockPhotos" class="dashboard__item">
+      <div *cdkVirtualFor="let photo of photos | async" class="dashboard__item">
         <app-card [photo]="photo"></app-card></div>
     </cdk-virtual-scroll-viewport>
   </div>
