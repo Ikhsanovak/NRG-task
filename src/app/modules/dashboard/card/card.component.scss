@@ -1,5 +1,12 @@
 .card {
   max-width: 400px;
+  background-color: #f9f3f4;
+  border-radius: 10px;
+  margin: 10px;
+
+  .mat-card-title {
+    text-align: center;
+  }
 
   .mat-card-content {
     display: flex;
@@ -8,7 +15,7 @@
   }
 
   .mat-card-actions {
-    padding: 0;
+    padding: 0 0 7px 0;
     margin: 0;
   }
 }

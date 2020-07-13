@@ -1,8 +1,14 @@
 <app-page-layout>
   <div content>
-    <cdk-virtual-scroll-viewport itemSize="280" class="dashboard__viewport">
+    <cdk-virtual-scroll-viewport itemSize="290" class="dashboard__viewport" *ngIf="(photos$ | async).length; else error">
       <div *cdkVirtualFor="let photo of photos$" class="dashboard__item">
         <app-card [photo]="photo"></app-card></div>
     </cdk-virtual-scroll-viewport>
+
+    <ng-template #error>
+      <span>
+        Sorry, there are some problems with loading data
+      </span>
+    </ng-template>
   </div>
 </app-page-layout>
