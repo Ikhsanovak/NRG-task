@@ -25,3 +25,19 @@ export const getAllPhotos = createSelector(
   getPhotosState,
   PhotosReducer.selectAll,
 );
+
+export const selectPhotosEntities = createSelector(
+  getPhotosState,
+  PhotosReducer.selectPhotosEntities
+);
+
+export const selectCurrentPhotoId = createSelector(
+  getPhotosState,
+  PhotosReducer.getSelectedPhotoId
+);
+
+export const selectCurrentPhoto = createSelector(
+  selectPhotosEntities,
+  selectCurrentPhotoId,
+  (photoEntities, photoId) => photoEntities[photoId]
+);

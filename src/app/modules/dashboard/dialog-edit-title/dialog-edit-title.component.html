@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>You can edit title</h1>
+<div mat-dialog-content>
+  <form class="edit-title-form">
+    <mat-form-field class="edit-title-form__field">
+      <mat-label>Title</mat-label>
+      <textarea matInput [formControl]="titleFormControl"></textarea>
+      <mat-error *ngIf="titleFormControl.hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button
+          cdkFocusInitial
+          [disabled]="titleFormControl.hasError('required')"
+          (click)="updateTitle()">Ok</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

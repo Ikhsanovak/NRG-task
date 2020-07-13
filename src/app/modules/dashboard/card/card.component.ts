@@ -5,6 +5,9 @@ import {CardDialogComponent} from '../card-dialog/card-dialog.component';
 import {Store} from '@ngrx/store';
 import * as PhotosActions from '../../../store/actions/photos.actions';
 import {State} from '../../../store/reducers';
+import {DialogEditTitleComponent} from '../dialog-edit-title/dialog-edit-title.component';
+import * as index from '../../../store/reducers';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -19,6 +22,8 @@ export class CardComponent implements OnInit {
   public horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   public verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
+  public photo$: Observable<PhotoModel>;
+
   constructor(
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
@@ -29,20 +34,22 @@ export class CardComponent implements OnInit {
   }
 
   openDialog(photo: PhotoModel) {
-    this.store.dispatch(new PhotosActions.SelectPhoto({photo}));
+    this.store.dispatch(new PhotosActions.SelectPhoto({id: photo.id}));
+    this.photo$ = this.store.select(index.selectCurrentPhoto);
     this.dialog.open(CardDialogComponent, {
       data: photo
     });
   }
 
-  edit(event) {
+  edit(event, photo: PhotoModel) {
     event.stopPropagation();
-    console.log('edit');
+    this.dialog.open(DialogEditTitleComponent, {
+      data: photo
+    });
   }
 
   delete(event, id: number) {
     event.stopPropagation();
-    console.log('delete');
     this.store.dispatch(new PhotosActions.DeletePhoto({id}));
     this.openSnackBar(`Item ${id} was deleted`, '');
   }

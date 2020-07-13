@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {MOCK_PHOTOS} from '../test/mock-data/mock-photos';
 import {PhotosApiService} from '../../services/photos-api.service';
 import {Observable} from 'rxjs';
 import {PhotoModel} from '../../models/photo-model';
@@ -23,9 +22,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.photos$ = this.store.select(index.getAllPhotos);
     this.store.dispatch(new LoadPhotos());
-
-    this.store.subscribe(state => console.log(state));
+    this.photos$ = this.store.select(index.getAllPhotos);
   }
 }

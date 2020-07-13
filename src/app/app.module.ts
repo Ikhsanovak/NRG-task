@@ -14,6 +14,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import {PhotosEffects} from './store/effects/photos.effects';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import {PhotosEffects} from './store/effects/photos.effects';
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     PageLayoutModule,
     DashboardModule,

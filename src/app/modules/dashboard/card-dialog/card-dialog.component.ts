@@ -14,7 +14,6 @@ export class CardDialogComponent implements OnInit {
 
 
   constructor(
-    private store: Store<index.State>,
     @Inject(MAT_DIALOG_DATA) public photo: PhotoModel
   ) { }
 

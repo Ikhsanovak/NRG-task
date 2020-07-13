@@ -1,12 +1,13 @@
 import {Action} from '@ngrx/store';
 import {PhotoModel} from '../../models/photo-model';
+import {Update} from '@ngrx/entity';
 
 export enum PhotosActionsEnum {
   LoadPhotos = '[Dashboard Page] Load Photos',
-  PhotosLoadedSuccess = '[Articles Page] Articles Loaded Success',
-  PhotosLoadedError = '[Articles Page] Articles Loaded Error',
+  PhotosLoadedSuccess = '[Dashboard Page] Photos Loaded Success',
+  PhotosLoadedError = '[Dashboard Page] Photos Loaded Error',
   DeletePhoto = '[Dashboard Page] Delete Photo',
-  EditPhoto = '[Dashboard Page] Edit Photo',
+  EditPhoto = '[Dashboard Page] Edit Photo Title',
   SelectPhoto = '[Dashboard Page] Select Photo'
 }
 
@@ -33,13 +34,14 @@ export class DeletePhoto implements Action {
 export class EditPhoto implements Action {
   readonly type = PhotosActionsEnum.EditPhoto;
 
-  constructor(public payload: PhotoModel) { }
+  constructor(public payload: { update: Update<PhotoModel> }) { }
 }
 
 export class SelectPhoto implements Action {
   readonly type = PhotosActionsEnum.SelectPhoto;
 
-  constructor(public payload: { photo: PhotoModel }) { }
+  constructor(public payload: { id: number }) { }
 }
 
-export type PhotosActionTypes = LoadPhotos | PhotosLoadedSuccess | PhotosLoadedError | DeletePhoto | EditPhoto | SelectPhoto;
+export type PhotosActionTypes = LoadPhotos | PhotosLoadedSuccess | PhotosLoadedError |
+  DeletePhoto | EditPhoto | SelectPhoto;

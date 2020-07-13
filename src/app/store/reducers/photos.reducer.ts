@@ -3,7 +3,6 @@ import {PhotosActionsEnum, PhotosActionTypes} from '../actions/photos.actions';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 
 export interface PhotosState extends EntityState<PhotoModel> {
-  selectedPhoto: PhotoModel;
   selectedPhotoId: number;
   loading: boolean;
 }
@@ -19,13 +18,6 @@ export const adapter: EntityAdapter<PhotoModel> =
 
 
 export const initialPhotosState: PhotosState = adapter.getInitialState({
-  selectedPhoto: {
-    id: null,
-    title: null,
-    albumId: null,
-    thumbnailUrl: null,
-    url: null
-  },
   selectedPhotoId: null,
   loading: false,
 });
@@ -49,13 +41,16 @@ export function photosReducer(state: PhotosState = initialPhotosState, action: P
     case PhotosActionsEnum.SelectPhoto:
       return {
         ...state,
-        selectedPhoto: action.payload.photo,
-        selectedPhotoId: action.payload.photo.id,
+        selectedPhotoId: action.payload.id,
       };
+    case PhotosActionsEnum.EditPhoto:
+      return adapter.updateOne(action.payload.update, state);
     default:
       return state;
   }
 }
+
+export const getSelectedPhotoId = (state: PhotosState) => state.selectedPhotoId;
 
 export const {
   selectAll,
@@ -63,5 +58,7 @@ export const {
   selectIds,
   selectTotal
 } = adapter.getSelectors();
+
+export const selectPhotosEntities = selectEntities;
 
 
