@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PhotoModel} from '../../../models/photo-model';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material';
 import {CardDialogComponent} from '../card-dialog/card-dialog.component';
 import {Store} from '@ngrx/store';
-import * as fromRoot from '../../../store/reducers';
 import * as PhotosActions from '../../../store/actions/photos.actions';
+import {State} from '../../../store/reducers';
 
 @Component({
   selector: 'app-card',
@@ -16,16 +16,20 @@ export class CardComponent implements OnInit {
   @Input()
   photo: PhotoModel;
 
+  public horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  public verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(
     public dialog: MatDialog,
-    private store: Store<fromRoot.State>
+    private _snackBar: MatSnackBar,
+    private store: Store<State>
   ) { }
 
   ngOnInit() {
   }
 
   openDialog(photo: PhotoModel) {
-    this.store.dispatch(new PhotosActions.SelectPhoto({id: photo.id}));
+    this.store.dispatch(new PhotosActions.SelectPhoto({photo}));
     this.dialog.open(CardDialogComponent, {
       data: photo
     });
@@ -36,8 +40,18 @@ export class CardComponent implements OnInit {
     console.log('edit');
   }
 
-  delete(event) {
+  delete(event, id: number) {
     event.stopPropagation();
     console.log('delete');
+    this.store.dispatch(new PhotosActions.DeletePhoto({id}));
+    this.openSnackBar(`Item ${id} was deleted`, '');
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import {PageLayoutModule} from '../page-layout/page-layout.module';
-import {MatButtonModule, MatCardModule, MatDialogModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatSnackBarModule} from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { CardComponent } from './card/card.component';
 import { CardDialogComponent } from './card-dialog/card-dialog.component';
@@ -15,7 +15,8 @@ import { CardDialogComponent } from './card-dialog/card-dialog.component';
     MatCardModule,
     ScrollingModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   entryComponents: [CardDialogComponent]
 })

@@ -1,15 +1,24 @@
 import {PhotoModel} from '../../models/photo-model';
 import {PhotosActionsEnum, PhotosActionTypes} from '../actions/photos.actions';
+import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 
-export interface PhotosState {
-  photos: PhotoModel[];
+export interface PhotosState extends EntityState<PhotoModel> {
   selectedPhoto: PhotoModel;
   selectedPhotoId: number;
   loading: boolean;
 }
 
-export const initialState: PhotosState = {
-  photos: [],
+export function selectedPhotoId(a: PhotoModel): number {
+  return a.id;
+}
+
+export const adapter: EntityAdapter<PhotoModel> =
+  createEntityAdapter<PhotoModel>({
+    selectId: selectedPhotoId,
+  });
+
+
+export const initialPhotosState: PhotosState = adapter.getInitialState({
   selectedPhoto: {
     id: null,
     title: null,
@@ -19,9 +28,9 @@ export const initialState: PhotosState = {
   },
   selectedPhotoId: null,
   loading: false,
-};
+});
 
-export function photosReducer(state: PhotosState = initialState, action: PhotosActionTypes) {
+export function photosReducer(state: PhotosState = initialPhotosState, action: PhotosActionTypes): PhotosState {
   switch (action.type) {
     case PhotosActionsEnum.LoadPhotos:
       return {
@@ -29,30 +38,30 @@ export function photosReducer(state: PhotosState = initialState, action: PhotosA
         loading: true
       };
     case PhotosActionsEnum.PhotosLoadedSuccess:
-      return {
-        ...state,
-        photos: action.payload.photos,
-        loading: false
-      };
+      return adapter.addMany(action.payload.photos, {...state, loading: false});
     case PhotosActionsEnum.PhotosLoadedError:
       return {
         ...state,
-        photos: [],
         loading: false
       };
-    case PhotosActionsEnum.SELECT_PHOTO:
+    case PhotosActionsEnum.DeletePhoto:
+      return adapter.removeOne(action.payload.id, state);
+    case PhotosActionsEnum.SelectPhoto:
       return {
         ...state,
-        // selectedPhoto: action.payload.photo,
-        selectedPhotoId: action.payload.id,
+        selectedPhoto: action.payload.photo,
+        selectedPhotoId: action.payload.photo.id,
       };
     default:
       return state;
   }
 }
 
-export const getSelected = (state: PhotosState) => state.selectedPhoto;
-export const getPhotos = (state: PhotosState) => state.photos;
-
+export const {
+  selectAll,
+  selectEntities,
+  selectIds,
+  selectTotal
+} = adapter.getSelectors();
 
 

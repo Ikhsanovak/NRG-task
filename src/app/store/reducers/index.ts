@@ -23,5 +23,5 @@ export const getPhotosState = createFeatureSelector<PhotosReducer.PhotosState>('
 
 export const getAllPhotos = createSelector(
   getPhotosState,
-  PhotosReducer.getPhotos,
+  PhotosReducer.selectAll,
 );
