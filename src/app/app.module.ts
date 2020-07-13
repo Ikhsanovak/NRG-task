@@ -10,6 +10,10 @@ import {PageLayoutModule} from './modules/page-layout/page-layout.module';
 import {DashboardModule} from './modules/dashboard/dashboard.module';
 import {TestModule} from './modules/test/test.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import {PhotosEffects} from './store/effects/photos.effects';
 
 @NgModule({
   declarations: [
@@ -19,11 +23,17 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
     HttpClientModule,
     AppRoutingModule,
     PageLayoutModule,
     DashboardModule,
     TestModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([PhotosEffects]),
   ],
   providers: [
     HttpClient
