@@ -1,7 +1,14 @@
-<div class="page-wrapper">
-  <div class="page-content">
-    <app-header></app-header>
-    <ng-content select="[content]"></ng-content>
-  </div>
-  <app-footer></app-footer>
-</div>
+<mat-sidenav-container class="page-wrapper">
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="page-content">
+      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+      <main>
+        <ng-content select="[content]"></ng-content>
+      </main>
+    </div>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -4,7 +4,7 @@ import {DashboardComponent} from './modules/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full'},
-  {path: 'main', component: DashboardComponent},
+  {path: 'main', component: DashboardComponent}
 ];
 
 @NgModule({

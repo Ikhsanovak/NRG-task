@@ -1,6 +1,8 @@
+@import "../../../../assets/themes/base/styles/common/base.scss";
+
 .card {
   max-width: 400px;
-  background-color: #f9f3f4;
+  background-color: $light;
   border-radius: 10px;
   margin: 10px;
 
