@@ -37,14 +37,16 @@ export class CardComponent implements OnInit {
     this.store.dispatch(new PhotosActions.SelectPhoto({id: photo.id}));
     this.photo$ = this.store.select(index.selectCurrentPhoto);
     this.dialog.open(CardDialogComponent, {
-      data: photo
-    });
+      data: photo,
+      panelClass: 'custom-card-dialog'
+  });
   }
 
   edit(event, photo: PhotoModel) {
     event.stopPropagation();
     this.dialog.open(DialogEditTitleComponent, {
-      data: photo
+      data: photo,
+      width: '500px'
     });
   }
 

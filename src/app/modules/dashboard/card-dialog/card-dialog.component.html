@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{photo.title}}</h1>
 <div mat-dialog-content>
-  <img [src]="photo.url" height="400px" width="400px" [alt]="photo.id">
+  <img [src]="photo.url" class="card-dialog__img" [alt]="photo.id">
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+  <button mat-stroked-button mat-dialog-close>Close</button>
 </div>
