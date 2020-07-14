@@ -15,6 +15,7 @@ import {LoadPhotos} from '../../store/actions/photos.actions';
 export class DashboardComponent implements OnInit {
 
   public photos$: Observable<PhotoModel[]>;
+  public isLoadingError$: Observable<boolean>;
 
   constructor(
     private photosApiService: PhotosApiService,
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new LoadPhotos());
+    this.isLoadingError$ = this.store.select(index.selectErrorLoadingStatus);
     this.photos$ = this.store.select(index.getAllPhotos);
   }
 }

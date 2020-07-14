@@ -5,6 +5,7 @@ import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 export interface PhotosState extends EntityState<PhotoModel> {
   selectedPhotoId: number;
   loading: boolean;
+  error: boolean;
 }
 
 export function selectedPhotoId(a: PhotoModel): number {
@@ -20,6 +21,7 @@ export const adapter: EntityAdapter<PhotoModel> =
 export const initialPhotosState: PhotosState = adapter.getInitialState({
   selectedPhotoId: null,
   loading: false,
+  error: false
 });
 
 export function photosReducer(state: PhotosState = initialPhotosState, action: PhotosActionTypes): PhotosState {
@@ -27,14 +29,16 @@ export function photosReducer(state: PhotosState = initialPhotosState, action: P
     case PhotosActionsEnum.LoadPhotos:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: false
       };
     case PhotosActionsEnum.PhotosLoadedSuccess:
       return adapter.addMany(action.payload.photos, {...state, loading: false});
     case PhotosActionsEnum.PhotosLoadedError:
       return {
         ...state,
-        loading: false
+        loading: false,
+        error: true
       };
     case PhotosActionsEnum.DeletePhoto:
       return adapter.removeOne(action.payload.id, state);
@@ -51,6 +55,7 @@ export function photosReducer(state: PhotosState = initialPhotosState, action: P
 }
 
 export const getSelectedPhotoId = (state: PhotosState) => state.selectedPhotoId;
+export const getErrorLoadingStatus = (state: PhotosState) => state.error;
 
 export const {
   selectAll,
