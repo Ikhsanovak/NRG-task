@@ -9,12 +9,6 @@ $font-family: Helvetica, Arial, sans-serif;
   }
 }
 
-//.font-face(notosans_regular, NotoSans, 300);
-//.font-face(notosans_regular, NotoSans, 400);
-//.font-face(notosans_regular, NotoSans, 500);
-//.font-face(notosans_bold, NotoSans, 700);
-
-
 @mixin font-light {
   font-family: NotoSans, $font-family;
   font-weight: 300;
