@@ -7,7 +7,7 @@ import {
   MatCardModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule, MatRippleModule,
   MatSnackBarModule
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -35,7 +35,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ReactiveFormsModule,
     ExperimentalScrollingModule,
     FlexLayoutModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRippleModule
   ],
   entryComponents: [CardDialogComponent, DialogEditTitleComponent]
 })
