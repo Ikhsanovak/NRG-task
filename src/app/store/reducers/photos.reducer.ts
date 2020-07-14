@@ -55,7 +55,8 @@ export function photosReducer(state: PhotosState = initialPhotosState, action: P
 }
 
 export const getSelectedPhotoId = (state: PhotosState) => state.selectedPhotoId;
-export const getErrorLoadingStatus = (state: PhotosState) => state.error;
+export const getErrorLoadingStatus = (state: PhotosState) => state.error
+export const getLoadingStatus = (state: PhotosState) => state.loading;
 
 export const {
   selectAll,

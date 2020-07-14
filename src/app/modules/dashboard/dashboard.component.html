@@ -1,5 +1,10 @@
 <app-page-layout>
   <div content>
+    
+    <div class="dashboard-content" *ngIf="isLoading$ | async">
+      <mat-spinner diameter="70"></mat-spinner>
+    </div>
+
     <cdk-virtual-scroll-viewport autosize class="dashboard__viewport" *ngIf="!(isLoadingError$ | async); else error">
       <div class="dashboard-content" fxLayout="row wrap" fxLayoutAlign="center center">
         <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *cdkVirtualFor="let photo of photos$">

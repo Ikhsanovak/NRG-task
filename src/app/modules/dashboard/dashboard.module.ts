@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import {PageLayoutModule} from '../page-layout/page-layout.module';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule
+} from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {ScrollingModule as ExperimentalScrollingModule} from '@angular/cdk-experimental/scrolling';
 import { CardComponent } from './card/card.component';
@@ -27,7 +34,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     ExperimentalScrollingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [CardDialogComponent, DialogEditTitleComponent]
 })

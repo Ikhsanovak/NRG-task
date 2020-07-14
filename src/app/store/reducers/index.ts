@@ -41,6 +41,11 @@ export const selectErrorLoadingStatus = createSelector(
   PhotosReducer.getErrorLoadingStatus
 );
 
+export const selectLoadingStatus = createSelector(
+  getPhotosState,
+  PhotosReducer.getLoadingStatus
+);
+
 export const selectCurrentPhoto = createSelector(
   selectPhotosEntities,
   selectCurrentPhotoId,

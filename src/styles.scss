@@ -7,3 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   max-height: 90vh;
   max-width: 800px;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #d57eeb;
+}
