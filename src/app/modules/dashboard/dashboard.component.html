@@ -1,7 +1,7 @@
 <app-page-layout>
   <div content>
     <cdk-virtual-scroll-viewport autosize class="dashboard__viewport" *ngIf="(photos$ | async).length; else error">
-      <div class="dashboard__content" fxLayout="row wrap" fxLayoutAlign="center center"  fxLayoutGap="15px grid">
+      <div class="dashboard__content" fxLayout="row wrap" fxLayoutAlign="center center">
         <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *cdkVirtualFor="let photo of photos$">
           <app-card [photo]="photo"></app-card>
         </div>
