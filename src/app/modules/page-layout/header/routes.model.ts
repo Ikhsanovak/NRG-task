@@ -5,6 +5,6 @@ export const MENU_ROUTES = [
   },
   {
     name: 'About',
-    url: '/'
+    url: '/about'
   }
 ];

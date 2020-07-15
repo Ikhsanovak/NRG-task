@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import {PhotosEffects} from './store/effects/photos.effects';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AboutModule} from './modules/about/about.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     PageLayoutModule,
     DashboardModule,
-    TestModule,
+    AboutModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([PhotosEffects]),
   ],

@@ -1,0 +1,21 @@
+@import "../../../assets/themes/base/styles/common/base.scss";
+
+.about {
+
+  &-content {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+
+    &__block {
+      margin: 15px;
+      padding: 20px;
+      width: 70%;
+      background-color: $light;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 10px;
+    }
+  }
+}

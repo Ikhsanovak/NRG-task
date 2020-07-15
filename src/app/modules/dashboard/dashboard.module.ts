@@ -7,7 +7,8 @@ import {
   MatCardModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatProgressSpinnerModule, MatRippleModule,
+  MatProgressSpinnerModule,
+  MatRippleModule,
   MatSnackBarModule
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
