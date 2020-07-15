@@ -34,7 +34,7 @@ export class DialogEditTitleComponent implements OnInit {
 
   public updateTitle() {
     this.photo.title = this.titleFormControl.value;
-    this.store.dispatch(new EditPhoto({update: {id: this.photo.id, changes: this.photo}}));
+    this.store.dispatch(new EditPhoto({id: this.photo.id, update: {id: this.photo.id, changes: this.photo}}));
     this.dialogRef.close();
     this.openSnackBar(`Title of item ${this.photo.id} was edited`, '');
   }

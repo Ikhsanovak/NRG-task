@@ -48,14 +48,14 @@ export function photosReducer(state: PhotosState = initialPhotosState, action: P
         selectedPhotoId: action.payload.id,
       };
     case PhotosActionsEnum.EditPhoto:
-      return adapter.updateOne(action.payload.update, state);
+      return adapter.updateOne(action.payload.update, {...state, selectedPhotoId: action.payload.id});
     default:
       return state;
   }
 }
 
 export const getSelectedPhotoId = (state: PhotosState) => state.selectedPhotoId;
-export const getErrorLoadingStatus = (state: PhotosState) => state.error
+export const getErrorLoadingStatus = (state: PhotosState) => state.error;
 export const getLoadingStatus = (state: PhotosState) => state.loading;
 
 export const {

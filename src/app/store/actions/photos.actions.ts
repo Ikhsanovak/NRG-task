@@ -34,7 +34,7 @@ export class DeletePhoto implements Action {
 export class EditPhoto implements Action {
   readonly type = PhotosActionsEnum.EditPhoto;
 
-  constructor(public payload: { update: Update<PhotoModel> }) { }
+  constructor(public payload: { id: number, update: Update<PhotoModel> }) { }
 }
 
 export class SelectPhoto implements Action {
